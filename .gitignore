@@ -126,3 +126,7 @@ dmypy.json
 
 # Custom additions
 rsc/
+
+# Docker
+.docker/
+docker-compose.override.yml

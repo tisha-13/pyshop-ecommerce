@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron text-center bg-light">
+    <div class="container">
+<h1 class="display-4">
+Welcome to PyShop
+</h1>
+
+<p class="lead">
+Everything you need in one place.
+</p>
+
+<a href="{% url 'products:index' %}"
+class="btn btn-primary btn-lg">
+Shop Now
+</a>        <p class="lead">
+            Your one-stop shop for bags, bottles, stationery and more.
+        </p>
+
+        <a href="{% url 'products:index' %}" class="btn btn-primary btn-lg">
+            shop now
+        </a>
+    </div>
+</div>
+
+<div class="container mb-5">
+
+    <h2 class="text-center mb-4">Shop by Category</h2>
+
+    <div class="row text-center">
+
+        <div class="col-md-4">
+
+    <a href="{% url 'products:index' %}" style="text-decoration:none; color:black;">
+
+        <div class="card shadow-sm p-4">
+            <h3>🎒</h3>
+            <h4>Bags</h4>
+            <p>School bags, backpacks and travel bags.</p>
+        </div>
+
+    </a>
+
+</div>
+<div class="col-md-4">
+
+    <a href="{% url 'products:index' %}" style="text-decoration:none; color:black;">
+
+        <div class="card shadow-sm p-4">
+            <h3>💧</h3>
+            <h4>Water Bottles</h4>
+            <p>Steel, plastic and sports bottles.</p>
+        </div>
+
+    </a>
+
+</div>
+
+      <div class="col-md-4">
+
+    <a href="{% url 'products:index' %}" style="text-decoration:none; color:black;">
+
+        <div class="card shadow-sm p-4">
+            <h3>✏️</h3>
+            <h4>Stationery</h4>
+            <p>Pencil boxes, notebooks and accessories.</p>
+        </div>
+
+    </a>
+
+</div>
+    </div>
+
+</div>
+
+<div class="container">
+
+    <h2 class="text-center mb-4">Featured Products</h2>
+
+    <div class="row">
+
+        {% for product in featured_products %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card h-100">
+
+                <img src="{{ product.image_url }}"
+                     class="card-img-top"
+                     style="height:250px; object-fit:cover;">
+
+                <div class="card-body text-center">
+
+                    <h5>{{ product.name }}</h5>
+
+                    <h4>${{ product.price }}</h4>
+
+                    <a href="{% url 'products:add_to_cart' product.id %}"
+                       class="btn btn-success">
+                        Add to Cart
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}
